@@ -59,19 +59,22 @@ void loop() {
 //   1. Define a tpc_type::log_type function, and
 //   2. Assign it to the static log member of the tpc_type class.
 // Both steps are shown here:
+// #define _LV_LOG_LEVEL_NUM   5
 #if (LV_USE_LOG)
 template<> const bsp::tpc_type::log_type bsp::tpc_type::log =
   [](lv_log_level_t ll, const char *msg) {
-    static const char *pre[_LV_LOG_LEVEL_NUM] = {
-      "[-] ", // [0] LV_LOG_LEVEL_TRACE
-      "[=] ", // [1] LV_LOG_LEVEL_INFO
-      "[~] ", // [2] LV_LOG_LEVEL_WARN
-      "[!] ", // [3] LV_LOG_LEVEL_ERROR
-      "[+] "  // [4] LV_LOG_LEVEL_USER
-    };
+    
+
+    // static const char *pre[_LV_LOG_LEVEL_NUM] = {
+    //   "[-] ", // [0] LV_LOG_LEVEL_TRACE
+    //   "[=] ", // [1] LV_LOG_LEVEL_INFO
+    //   "[~] ", // [2] LV_LOG_LEVEL_WARN
+    //   "[!] ", // [3] LV_LOG_LEVEL_ERROR
+    //   "[+] "  // [4] LV_LOG_LEVEL_USER
+    // };
     unsigned level = static_cast<unsigned>(ll);
     if (level < LV_LOG_LEVEL_NONE) {
-      Serial.print(pre[level]);
+      // Serial.print(pre[level]);
     }
     Serial.println(msg);
   };
